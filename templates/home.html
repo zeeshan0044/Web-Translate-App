@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+{% block title %} Home {% endblock title %}
+
+{% block body %}
+<div class="container my-3">
+    <div class="container my-3">
+        <h1>
+            Your Dictionary 
+        </h1>
+        <h4>English to Bengali</h4>
+    </div>
+    <form  action="/myDict" method="POST">
+        <div class="mb-3">
+            <label for="Eng" class="form-label">English</label>
+            <input type="text" autocomplete="off" class="form-control" id="Eng" name="EngWord">            
+        </div>
+        <div class="mb-3">
+            <label for="Ben" class="form-label">Bengali</label>
+            <p style="border: rgb(187, 182, 182); border-width: 0.5px; border-style: solid; padding:20px;" type="text"  id="Ben" name="BenWord" >  </p>
+        </div>  
+        <div class="d-grid gap-2 d-md-block">
+            <button type="submit" class="btn btn-outline-dark  mx-1">Translate</button>
+            <button type="reset" class="btn btn-outline-dark  mx-1">Clear</button>
+        </div>      
+    </form>
+</div>
+<div class="container my-5">
+    <div class="container my-3">
+        <h2>Word List: </h2>
+    </div>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Sl No</th>
+            <th scope="col">English</th>
+            <th scope="col">Bengali</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for word in myDict %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{word.eng}}</td>
+            <td>{{word.ben}}</td>
+            <td>
+              <a href='/delete/{{word.sno}}' type="button" class="btn btn-outline-dark  mx-1">Delet </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock body %}
