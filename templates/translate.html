@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% block title %} Home {% endblock title %}
+
+{% block body %}
+<div class="container my-3">
+    <div class="container my-3">
+        <h1>
+            Your Dictionary
+        </h1>
+        <h3>English -> Bengali</h3>
+    </div>
+    {% for eng in word %}
+    <div class="mb-3">
+        <label for="Eng" class="form-label">English</label>
+        <p style="border: rgb(187, 182, 182); border-width: 0.5px; border-style: solid; padding:10px;" type="text"
+            id="Ben" name="BenWord">{{eng}} </p>
+    </div>
+    <div class="mb-3">
+        <label for="Ben" class="form-label">Bengali</label>
+        <p style="border: rgb(187, 182, 182); border-width: 0.5px; border-style: solid; padding:10px;" type="text"
+            id="Ben" name="BenWord"> {{word[eng]}} </p>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="container my-3">
+    <a href="/addDict" type="button" class="btn btn-outline-dark  mx-1">Add your word book</a>
+    <a href="/myDict" type="button" class="btn btn-outline-dark  mx-1">Clear </a>
+</div>
+{% endblock body %}
